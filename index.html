@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/qvjz8QFW/Logo.png" />
+  <title>Cậu có thích tớ không ???</title>
+  <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+  <div class="card">
+    <img id="gif" src="https://i.pinimg.com/originals/01/df/7f/01df7f2337097617c8e34c15802b077f.gif" alt="Cute GIF"/>
+    <h1 id="question">Tớ thích cậu...làm người yêu mình nhé !</h1>
+
+    <div class="button-group">
+      <button id="yesBtn" class="btn btn-yes">Có</button>
+      <button id="noBtn" class="btn btn-no">Không</button>
+    </div>
+
+    <button id="letterBtn" class="btn btn-letter">Đọc Thư</button>
+  </div>
+
+  <div id="letterModal" class="letter-modal">
+    <div class="letter-box">
+      <button class="letter-close">&times;</button>
+      <div class="letter-content">
+        <h2 class="letter-title">Thư Gửi Cậu</h2>
+        <div class="letter-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="bg-music1">
+    <source src="./style/sound/No01.mp3" type="audio/mpeg" />
+  </audio>
+  <audio id="bg-music2">
+    <source src="./style/sound/Huh02.mp3" type="audio/mpeg" />
+  </audio>
+  <audio id="bg-music3">
+    <source src="./style/sound/Quack03.mp3" type="audio/mpeg" />
+  </audio>
+  <audio id="bg-music4" loop>
+    <source src="./style/sound/nhac.mp3" type="audio/mpeg" />
+  </audio>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="./style/script.js"></script>
+</body>
+</html>

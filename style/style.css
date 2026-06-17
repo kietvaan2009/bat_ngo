@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,400;0,600;1,400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #fce4f3 0%, #f9d0e8 30%, #e8d5f5 60%, #d5e8f9 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Decorative floating blobs in background */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.25;
+  filter: blur(60px);
+}
+
+body::before {
+  width: 420px;
+  height: 420px;
+  background: #ff80bf;
+  top: -100px;
+  left: -100px;
+  animation: blobDrift 12s ease-in-out infinite alternate;
+}
+
+body::after {
+  width: 350px;
+  height: 350px;
+  background: #b39ddb;
+  bottom: -80px;
+  right: -80px;
+  animation: blobDrift 15s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes blobDrift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(40px, 30px) scale(1.1);
+  }
+}
+
+/* Main card */
+.card {
+  position: relative;
+  z-index: 1;
+  padding: 2.5rem 2rem;
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+/* GIF image */
+#gif {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 22px;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 8px 24px rgba(255, 100, 180, 0.25),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+#gif:hover {
+  transform: scale(1.04) rotate(-1deg);
+  box-shadow:
+    0 14px 36px rgba(255, 100, 180, 0.35),
+    0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  color: #d63384;
+  font-size: clamp(0.85rem, 2.5vw, 1.55rem);
+  line-height: 1.4;
+  min-height: 1.6em;
+  white-space: nowrap;
+  text-shadow:
+    0 2px 12px rgba(214, 51, 132, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.01em;
+}
+
+/* Background gallery */
+#bg-gallery {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  transition: opacity 0.45s ease;
+}
+
+.bg-item {
+  position: absolute;
+  pointer-events: none;
+  object-fit: contain;
+  will-change: opacity, transform;
+}
+
+.bg-photo {
+  border-radius: 10px;
+  border: 2.5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.13);
+}
+
+/* Button group */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.btn {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.05rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  letter-spacing: 0.03em;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.18);
+  opacity: 0;
+  transition: opacity 0.2s;
+  border-radius: inherit;
+}
+
+.btn:hover::after {
+  opacity: 1;
+}
+
+.btn-yes {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.4), 0 1px 3px rgba(0, 0, 0, 0.08);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.btn-no {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.4), 0 1px 3px rgba(0, 0, 0, 0.08);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.06);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.btn-yes:hover {
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.5), 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-no:hover {
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.5), 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Letter button */
+#letterBtn {
+  display: none;
+}
+
+.btn-letter {
+  background: linear-gradient(135deg, #f9a8d4, #ec4899);
+  color: #fff;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 16px rgba(236, 72, 153, 0.35), 0 1px 3px rgba(0, 0, 0, 0.08);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.btn-letter:hover {
+  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.5);
+}
+
+/* Letter modal */
+.letter-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(15, 5, 30, 0.48);
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.letter-modal.open {
+  display: flex;
+}
+.letter-modal.closing {
+  animation: modalBgFadeOut 0.42s ease-in forwards;
+}
+.letter-modal.closing .letter-box {
+  animation: letterBoxClose 0.38s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+@keyframes letterBoxClose {
+  from { transform: scale(1) translateY(0);   opacity: 1; }
+  to   { transform: scale(0.82) translateY(50px); opacity: 0; }
+}
+@keyframes modalBgFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.letter-box {
+  position: relative;
+  background: #fffaf4;
+  border-radius: 20px;
+  padding: 2.2rem 2rem 2rem;
+  width: min(500px, 92vw);
+  height: min(600px, 85vh);
+  display: flex;
+  flex-direction: column;
+  /* Viền lá thư */
+  border: 2px solid #f9a8d4;
+  outline: 5px solid rgba(249, 168, 212, 0.25);
+  outline-offset: 4px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.22),
+    inset 0 0 0 6px rgba(255, 255, 255, 0.6),
+    inset 0 0 0 7px #f9a8d4;
+  animation: letterPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  background-image: repeating-linear-gradient(transparent,
+      transparent 31px,
+      #fad5e8 32px);
+}
+
+@keyframes letterPop {
+  from {
+    transform: scale(0.8) translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.letter-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #aaa;
+  line-height: 1;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.letter-close:hover {
+  color: #555;
+  transform: rotate(90deg);
+}
+
+.letter-title {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.5rem;
+  color: #d63384;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.letter-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.letter-body {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 2.2;
+  overflow-y: auto;
+  scrollbar-width: none;
+  height: calc(min(600px, 85vh) - 8.5rem);
+}
+
+.letter-body::-webkit-scrollbar {
+  display: none;
+}
+
+.letter-body p {
+  margin: 0 0 0.5rem;
+  font-family: 'Pacifico', cursive;
+  text-align: justify;
+}
+
+.letter-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Emoji pop effect */
+.emoji-effect {
+  position: fixed;
+  animation: popFade 1s ease-out forwards;
+  pointer-events: none;
+  user-select: none;
+  z-index: 9999;
+  font-size: 1.6rem;
+}
+
+@keyframes popFade {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  50% {
+    transform: scale(1.6) translateY(-28px);
+    opacity: 0.75;
+  }
+
+  100% {
+    transform: scale(0.5) translateY(-56px);
+    opacity: 0;
+  }
+}
+
+/* Shake animation */
+@keyframes shakeHard {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+.shake {
+  animation: shakeHard 0.6s ease;
+}
+
+
+
+
+/* Mobile */
+@media (max-width: 600px) {
+  .card {
+    padding: 2rem 1.4rem;
+    border-radius: 24px;
+    gap: 1.2rem;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    font-size: 0.95rem;
+    padding: 0.65rem 1.6rem;
+  }
+
+  .floating-img {
+    width: 90px !important;
+  }
+}
